@@ -1,0 +1,26 @@
+group "com.mcheat.ms"
+version "1.0.0"
+
+jar {
+    baseName = project.name
+    version = project.version
+}
+
+dependencies {
+    // spring-boot-web
+    compile "org.springframework.boot:spring-boot-starter-web"
+    // spring-security
+    compile "org.springframework.boot:spring-boot-starter-security"
+    // spring-boot-actuator
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+    // eureka-server
+    compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client") {
+        exclude group:"com.sun.jersey",module:"jersey-client"
+        exclude group:"com.sun.jersey",module:"jersey-core"
+        exclude group:"com.sun.jersey",module:"jersey-apache-client4"
+    }
+
+}
+
+apply from: "../properties_replace.gradle"
+apply from: "../installation_package.gradle"

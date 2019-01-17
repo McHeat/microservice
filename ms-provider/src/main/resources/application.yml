@@ -1,0 +1,19 @@
+server:
+  port: 8800
+
+spring:
+  application:
+    name: ms-provider
+eureka:
+  instance:
+    instance-id: ${spring.application.name}@${spring.cloud.client.ip-address}:${spring.application.instance_id:${server.port}}
+    prefer-ip-address: true
+#    nonSecurePortEnabled: false
+#    securePortEnabled: true
+#    status-page-url: https://${eureka.instance.hostname}/actuator/info
+#    health-check-url: https://${eureka.instance.hostname}/actuator/health
+#    home-page-url: https://${eureka.instance.hostname}/
+  client:
+    healthcheck.enabled: true  # 开启健康检查，默认值为true
+    serviceUrl:
+      defaultZone: http://user:Aa123456@peer1:9000/eureka/, http://user:Aa123456@peer2:9001/eureka/

@@ -1,0 +1,11 @@
+task generateInstallPackages(type: Copy) {
+    println("build/libs/${project.name}-${jar.version}-exec.jar")
+
+    from "build/libs/${project.name}-${jar.version}-exec.jar"
+    into "build/install/"
+    rename "${project.name}-${jar.version}-exec.jar", "${project.name}-exec.jar"
+
+    from("src/main/profiles/${profile}") {
+        into("config")
+    }
+}

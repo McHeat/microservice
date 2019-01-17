@@ -1,0 +1,25 @@
+group "com.haiercash.ms"
+version "1.0.0"
+
+/*springBoot {
+    classifier = 'exec'
+}*/
+
+jar {
+    baseName = project.name
+    version = project.version
+}
+
+dependencies {
+
+    // spring-boot
+    compile "org.springframework.boot:spring-boot-starter-web"
+    // spring-security
+    compile "org.springframework.boot:spring-boot-starter-security"
+    // eureka-server
+    compile "org.springframework.cloud:spring-cloud-starter-netflix-eureka-server"
+
+}
+
+apply from: "../properties_replace.gradle"
+apply from: "../installation_package.gradle"
